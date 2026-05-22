@@ -1,14 +1,16 @@
-export default function Nav({ activeSection }) {
+import { SITE } from '../config'
+
+export default function Nav({ activeSection, scrolled }) {
   const links = [['work', 'Work'], ['contact', 'Contact']]
 
   const nameStyle = activeSection === 'about'
-    ? { background: 'var(--accent)', color: '#444' }
-    : { background: '#1C1C1E', color: '#fff' }
+    ? { background: 'var(--accent)', color: 'var(--text-on-accent)' }
+    : { background: 'var(--text)', color: 'var(--text-inverse)' }
 
   return (
-    <nav className="nav">
+    <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
       <a href="#about" className="nav-pill nav-name" style={nameStyle}>
-        Francisco Cardoso
+        {SITE.name}
       </a>
       <div className="nav-pill nav-menu">
         {links.map(([id, label]) => (

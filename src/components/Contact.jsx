@@ -1,16 +1,14 @@
 import { useState } from 'react'
 import { IcoMail } from './icons'
-
-const SKILLS = ['Data Visualization', 'Data Automation', 'Data Product Design', 'Data System Architecture']
-const EMAIL = 'ffmcardoso@gmail.com'
+import { SITE, TIMING } from '../config'
 
 export default function Contact() {
   const [copied, setCopied] = useState(false)
 
   const copy = () => {
-    navigator.clipboard.writeText(EMAIL).catch(() => {})
+    navigator.clipboard.writeText(SITE.email).catch(() => {})
     setCopied(true)
-    setTimeout(() => setCopied(false), 2600)
+    setTimeout(() => setCopied(false), TIMING.copyNotification)
   }
 
   return (
@@ -22,12 +20,12 @@ export default function Contact() {
           or a project that needs a good partner, let&apos;s talk. Anything else works too.
         </p>
         <div className="skill-pills fade-up">
-          {SKILLS.map(s => (
+          {SITE.skills.map(s => (
             <span key={s} className="skill-pill">{s}</span>
           ))}
         </div>
         <button className="email-pill fade-up" onClick={copy}>
-          <IcoMail /> {EMAIL}
+          <IcoMail /> {SITE.email}
         </button>
         <div className="copy-note" style={{ opacity: copied ? 1 : 0 }}>
           Copied to clipboard ✓

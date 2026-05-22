@@ -1,17 +1,18 @@
 import { IcoLinkedIn, IcoGitHub, IcoTableau } from './icons'
+import { SOCIAL } from '../config'
 
-const links = [
-  { href: 'https://es.linkedin.com/in/ffmc', icon: <IcoLinkedIn />, label: 'LinkedIn' },
-  { href: 'https://public.tableau.com/app/profile/francisco4773/vizzes', icon: <IcoTableau />, label: 'Tableau' },
-  { href: 'https://github.com/ffmc', icon: <IcoGitHub />, label: 'GitHub' },
-]
+const ICON_MAP = {
+  LinkedIn: <IcoLinkedIn />,
+  Tableau:  <IcoTableau />,
+  GitHub:   <IcoGitHub />,
+}
 
 export default function Footer() {
   return (
     <footer className="footer">
-      {links.map(({ href, icon, label }) => (
+      {SOCIAL.map(({ label, href }) => (
         <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-icon" title={label}>
-          {icon}
+          {ICON_MAP[label]}
         </a>
       ))}
     </footer>
