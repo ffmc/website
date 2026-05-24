@@ -262,7 +262,7 @@ body {
   height: 54px; padding: 0 28px; border-radius: 999px;
   background: var(--text); color: var(--text-inverse);
   font-size: 15px; font-weight: 600;
-  border: none; cursor: pointer;
+  border: none; cursor: pointer; text-decoration: none;
   font-family: 'Space Grotesk', sans-serif;
   transition: background 0.2s, transform 0.18s, box-shadow 0.2s;
 }
@@ -322,12 +322,10 @@ body {
 /* ── RESPONSIVE ──────────────────────── */
 @media (max-width: 860px) {
   .about-split { grid-template-columns: 1fr; gap: 32px; min-height: auto; }
-  .about-photo-wrap { width: 220px; height: 270px; }
+  .about-photo-wrap { width: min(300px, 100%); height: auto; aspect-ratio: 300 / 380; margin: 0 auto; }
   .work-gallery-2col { grid-template-columns: 1fr; }
   .page-section { padding: 80px 28px; }
   #about { padding-top: 110px; }
-}
-
-@media (max-width: 480px) {
-  .nav-menu { display: none; }
+  .contact-wrap { padding: 56px 24px 80px; }
+  .contact-heading { font-size: clamp(26px, 8vw, 48px); }
 }
