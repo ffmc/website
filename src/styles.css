@@ -328,4 +328,6 @@ body {
   #about { padding-top: 110px; }
   .contact-wrap { padding: 56px 24px 80px; }
   .contact-heading { font-size: clamp(26px, 8vw, 48px); }
+  .social-label { display: none; }
+  .social-pill { padding: 0; width: 38px; justify-content: center; }
 }

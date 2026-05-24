@@ -37,8 +37,8 @@ export default function About() {
           </p>
           <div className="social-pills">
             {SOCIAL.map(({ label, href }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-pill">
-                {ICON_MAP[label]} {label}
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="social-pill" aria-label={label}>
+                {ICON_MAP[label]} <span className="social-label">{label}</span>
               </a>
             ))}
           </div>
