@@ -189,7 +189,7 @@ body {
 }
 
 .work-img-wrap--video {
-  background: #5e3d9e;
+  background: var(--placeholder-bg);
   display: flex;
   align-items: center;
   justify-content: center;
