@@ -1,5 +1,14 @@
 const projects = [
   {
+    id: 0,
+    title: 'The Scramble Cook',
+    desc: 'Personal app that builds a random weekly menu from home recipes. Pulls from a cloud datasource to end the daily "what are we having?" chore.',
+    image: '/images/thumbnails/scramble-cook.png',
+    video: '/images/thumbnails/scramble-cook.mp4',
+    link: 'https://github.com/ffmc/scramble-cook',
+    thumbH: 1100,
+  },
+  {
     id: 1,
     title: "World's Happiness in 2026",
     desc: 'Interactive D3.js exploration of global wellbeing scores across 147 countries using 2026 Gallup data.',

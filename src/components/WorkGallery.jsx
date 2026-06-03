@@ -32,6 +32,21 @@ function CardWrapper({ link, className, style, children }) {
   return <div className={className} style={style}>{children}</div>
 }
 
+function VideoCard({ src, poster, desc }) {
+  const videoRef = useRef(null)
+  return (
+    <div
+      className="work-img-wrap work-img-wrap--video"
+      onMouseEnter={() => videoRef.current?.play()}
+      onMouseLeave={() => { videoRef.current?.pause(); videoRef.current.currentTime = 0 }}
+    >
+      <video ref={videoRef} src={src} poster={poster} muted loop playsInline />
+      <div className="work-hover-overlay" />
+      <div className="work-desc-band"><p>{desc}</p></div>
+    </div>
+  )
+}
+
 export default function WorkGallery({ cols = '2' }) {
   const [count, setCount] = useState(PER_PAGE)
   const prevCountRef = useRef(0)
@@ -59,13 +74,16 @@ export default function WorkGallery({ cols = '2' }) {
         <div className="work-info">
           <div className="work-title">{p.title}</div>
         </div>
-        <div className="work-img-wrap">
-          {p.image && <img src={p.image} alt={p.title} />}
-          <div className="work-hover-overlay" />
-          <div className="work-desc-band">
-            <p>{p.desc}</p>
-          </div>
-        </div>
+        {p.video
+          ? <VideoCard src={p.video} poster={p.image} desc={p.desc} />
+          : (
+            <div className="work-img-wrap">
+              {p.image && <img src={p.image} alt={p.title} />}
+              <div className="work-hover-overlay" />
+              <div className="work-desc-band"><p>{p.desc}</p></div>
+            </div>
+          )
+        }
       </CardWrapper>
     )
   }

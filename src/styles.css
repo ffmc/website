@@ -188,6 +188,20 @@ body {
   padding: 3px;
 }
 
+.work-img-wrap--video {
+  background: #5e3d9e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+}
+
+.work-img-wrap--video video {
+  width: 55%;
+  border-radius: 12px;
+  display: block;
+}
+
 .work-thumb:hover .work-img-wrap {
   box-shadow: 0 20px 48px rgba(0, 0, 0, 0.15), 0 0 0 2px var(--accent);
 }
