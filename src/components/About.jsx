@@ -27,9 +27,12 @@ export default function About() {
             one taught me something useful but none of them felt quite right until data did.
           </p>
           <p className="about-bio">
-            Since then I have been building solutions to data problems of all shapes: helping people
-            see and understand their data, cutting out manual work that shouldn&rsquo;t exist, and putting
-            together custom platforms that actually fit how teams work with data.
+            Data visualization is where it started, making complex things readable, picking the right chart,
+            obsessing over the UX until something clicked. More recently the work has shifted toward building
+            complete solutions. The Scramble Cook is a personal app that generates a random weekly menu from
+            home recipes, solving a household chore that had stuck around for years. A data portal built from
+            scratch did the same at work, bringing scattered data products under one roof so teams stop hunting
+            across platforms.
           </p>
           <p className="about-bio about-bio--last">
             Whatever the tool, the project or the problem, that feeling of turning something complex

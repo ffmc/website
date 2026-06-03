@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'Francisco Cardoso',
   email: 'ffmcardoso@gmail.com',
-  skills: ['Data Visualization', 'Data Automation', 'Product Design', 'AI Development'],
+  skills: ['Data Integration', 'AI Solutions', 'Product Design', 'Solution Architecture'],
 }
 
 export const SOCIAL = [
