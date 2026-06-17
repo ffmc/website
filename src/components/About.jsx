@@ -30,7 +30,7 @@ export default function About() {
             Data visualization is where it started, making complex things readable, picking the right chart,
             obsessing over the UX until something clicked. More recently the work has shifted toward building
             complete solutions. The Scramble Cook is a personal app that generates a random weekly menu from
-            home recipes, solving a household chore that had stuck around for years. A data portal built from
+            home recipes, solving a household chore that had stuck around for years. A next-gen data portal built from
             scratch did the same at work, bringing scattered data products under one roof so teams stop hunting
             across platforms.
           </p>
