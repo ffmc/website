@@ -5,7 +5,7 @@ const projects = [
     desc: 'Personal app that builds a random weekly menu from home recipes. Pulls from a cloud datasource to end the daily "what are we having?" chore.',
     image: '/images/thumbnails/scramble-cook.png',
     video: '/images/thumbnails/scramble-cook.mp4',
-    link: 'https://github.com/ffmc/scramble-cook',
+    link: '/scramble-cook.html',
     thumbH: 1100,
   },
   {
