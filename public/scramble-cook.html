@@ -44,6 +44,14 @@
 
   .wrap { max-width: 1240px; margin: 0 auto; padding: var(--space-4xl) var(--space-2xl); }
 
+  .back-link {
+    display: inline-flex; align-items: center; gap: var(--space-xs);
+    margin-bottom: var(--space-xl);
+    color: var(--text-muted); font-size: 0.875rem; font-weight: 500;
+    text-decoration: none; transition: color 0.18s ease;
+  }
+  .back-link:hover { color: var(--text-primary); }
+
   header.doc { margin-bottom: var(--space-3xl); max-width: 62ch; }
   header.doc h1 { font-size: clamp(2.375rem, 5.5vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
   header.doc p { color: var(--text-secondary); font-size: 1.0625rem; margin-top: var(--space-sm); line-height: 1.75; }
@@ -168,6 +176,7 @@
 </style>
 
 <div class="wrap">
+  <a class="back-link" href="/">&larr; Back to franciscocardoso.eu</a>
   <header class="doc">
     <h1>The Scramble Cook</h1>
     <p>Plan your week, scramble your meals, and never wonder "what's for dinner" again. Join a household code to share a real-time synced plan, then hit Scramble to auto-fill the week from your recipe library &mdash; it never repeats last week's dishes and balances proteins across days.</p>

@@ -23,8 +23,14 @@ const { leftIds, rightIds } = buildColumnAssignment(projects)
 
 function CardWrapper({ link, className, style, children }) {
   if (link) {
+    const isInternal = link.startsWith('/')
     return (
-      <a href={link} target="_blank" rel="noopener noreferrer" className={className} style={style}>
+      <a
+        href={link}
+        {...(isInternal ? {} : { target: '_blank', rel: 'noopener noreferrer' })}
+        className={className}
+        style={style}
+      >
         {children}
       </a>
     )
