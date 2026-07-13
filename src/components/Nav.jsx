@@ -4,8 +4,8 @@ export default function Nav({ activeSection, scrolled }) {
   const links = [['work', 'Work'], ['contact', 'Contact']]
 
   const nameStyle = activeSection === 'about'
-    ? { background: 'var(--accent)', color: 'var(--text-on-accent)' }
-    : { background: 'var(--text)', color: 'var(--text-inverse)' }
+    ? { background: 'var(--color-accent)', color: 'var(--color-on-accent)' }
+    : { background: 'var(--color-primary)', color: 'var(--color-on-primary)' }
 
   return (
     <nav className={`nav${scrolled ? ' nav--scrolled' : ''}`}>
