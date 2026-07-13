@@ -26,7 +26,7 @@ export default function About() {
           </p>
           {!expanded && (
             <button type="button" className="about-load-more" onClick={() => setExpanded(true)}>
-              Load more
+              Read more
             </button>
           )}
           {expanded && (
