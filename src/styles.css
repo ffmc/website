@@ -100,6 +100,15 @@ body {
 
 .about-bio--last { margin-bottom: var(--space-xl); }
 
+.about-load-more {
+  background: none; border: none; padding: 0; cursor: pointer;
+  font-size: var(--type-sm-size); font-weight: 500;
+  color: var(--color-text-muted); text-decoration: underline;
+  margin-bottom: 18px; align-self: flex-start;
+}
+
+.about-load-more:hover { color: var(--color-text-secondary); }
+
 .social-pills { display: flex; gap: 10px; flex-wrap: wrap; }
 
 .social-pill {
