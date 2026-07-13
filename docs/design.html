@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Warm Grotesk — Style Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --accent: #FFB343;
+    --on-accent: #3D3A34;
+    --primary: #1C1B19;
+    --on-primary: #FFFFFF;
+    --surface: #F3F1EA;
+    --surface-raised: #FBFAF6;
+    --surface-sunken: #E9E6DD;
+    --text-primary: #1C1B19;
+    --text-secondary: #4A463F;
+    --text-muted: #66625A;
+    --text-faint: #A6A199;
+    --border: #E5E2D9;
+    --focus-ring: #FFB343;
+    --scrim: rgba(28,27,25,0.86);
+    --overlay: rgba(28,27,25,0.10);
+    --success: #3F8F63;
+    --warning: #C9821F;
+    --danger: #C24A38;
+    --info: #3C6F9E;
+
+    --font-sans: 'Space Grotesk', sans-serif;
+
+    --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px;
+    --space-lg: 24px; --space-xl: 36px; --space-2xl: 52px; --space-3xl: 72px; --space-4xl: 100px;
+
+    --radius-xs: 4px; --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px; --radius-full: 999px;
+
+    --elev-sm: 0 2px 8px rgba(38,34,26,0.06);
+    --elev-md: 0 4px 16px rgba(38,34,26,0.08);
+    --elev-lg: 0 20px 48px rgba(38,34,26,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--surface); color: var(--text-primary);
+    font-family: var(--font-sans); -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: var(--space-4xl) var(--space-2xl); }
+  header.doc { margin-bottom: var(--space-3xl); }
+  header.doc h1 { font-size: 2.75rem; font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+  header.doc p { color: var(--text-secondary); font-size: 1.0625rem; margin-top: var(--space-sm); max-width: 62ch; }
+  .mirror-note { margin-top: var(--space-md); font-size: 0.8125rem; color: var(--text-muted);
+    border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-sm) var(--space-md);
+    background: var(--surface-raised); display: inline-block; }
+
+  section { margin-top: var(--space-3xl); }
+  .rule { display: flex; align-items: center; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+  .rule .label { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+  .rule .line { flex: 1; height: 1px; background: var(--accent); }
+  .note { color: var(--text-secondary); font-size: 0.9375rem; max-width: 62ch; margin-bottom: var(--space-lg); }
+
+  /* colors */
+  .swatches { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: var(--space-md); }
+  .sw { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; background: var(--surface-raised); }
+  .sw .fill { height: 88px; display: flex; align-items: flex-end; padding: var(--space-xs); font-size: 0.75rem; }
+  .sw .meta { padding: var(--space-sm); }
+  .sw .meta .name { font-weight: 600; font-size: 0.8125rem; }
+  .sw .meta .hex { font-size: 0.75rem; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+
+  /* type */
+  .specimen { display: grid; grid-template-columns: 1fr; gap: var(--space-lg); }
+  .specimen .row { display: grid; grid-template-columns: 130px 1fr; gap: var(--space-lg); align-items: baseline; border-bottom: 1px solid var(--border); padding-bottom: var(--space-md); }
+  .specimen .spec { font-size: 0.75rem; color: var(--text-muted); font-variant-numeric: tabular-nums; line-height: 1.5; }
+
+  /* spacing */
+  .spacing-row { display: flex; align-items: center; gap: var(--space-md); margin-bottom: var(--space-sm); }
+  .spacing-row .bar { background: var(--accent); height: 16px; border-radius: var(--radius-xs); }
+  .spacing-row .lbl { font-size: 0.8125rem; color: var(--text-muted); width: 120px; }
+
+  /* radius */
+  .radius-grid { display: flex; gap: var(--space-lg); flex-wrap: wrap; }
+  .radius-grid .box { width: 96px; height: 96px; background: var(--surface-raised); border: 1px solid var(--border); box-shadow: var(--elev-sm); display: flex; align-items: flex-end; justify-content: center; padding: var(--space-xs); font-size: 0.75rem; color: var(--text-muted); }
+
+  /* elevation */
+  .elev-grid { display: flex; gap: var(--space-xl); flex-wrap: wrap; }
+  .elev-grid .card { width: 150px; height: 96px; background: var(--surface-raised); border-radius: var(--radius-md); display: flex; align-items: flex-end; justify-content: center; padding: var(--space-sm); font-size: 0.8125rem; color: var(--text-muted); }
+
+  /* components */
+  .demo { display: flex; gap: var(--space-md); flex-wrap: wrap; align-items: center; padding: var(--space-lg); background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-md); margin-bottom: var(--space-md); }
+  .demo .cap { width: 100%; font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .btn { height: 44px; padding: 0 var(--space-lg); border-radius: var(--radius-full); font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 600; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: var(--space-xs); transition: background .18s, color .18s, transform .18s, box-shadow .2s; text-decoration: none; }
+  .btn--primary { background: var(--primary); color: var(--on-primary); }
+  .btn--primary:hover { background: var(--accent); color: var(--on-accent); transform: translateY(-2px); box-shadow: var(--elev-md); }
+  .btn--accent { background: var(--accent); color: var(--on-accent); }
+  .btn--tonal { background: var(--surface-sunken); color: var(--text-muted); }
+  .btn--tonal:hover { color: var(--text-primary); transform: translateY(-2px); }
+  .btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+  .btn--disabled { opacity: 0.45; pointer-events: none; }
+  .btn--force-hover.btn--primary { background: var(--accent); color: var(--on-accent); box-shadow: var(--elev-md); }
+  .btn--force-focus { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+
+  .navbar { display: inline-flex; gap: var(--space-xs); align-items: center; }
+  .nav-name { height: 42px; padding: 0 var(--space-lg); border-radius: var(--radius-full); background: var(--accent); color: var(--on-accent); font-weight: 600; font-size: 0.875rem; display: flex; align-items: center; }
+  .nav-menu { display: flex; gap: 4px; padding: 0 var(--space-2xs); height: 42px; align-items: center; background: var(--surface-raised); border: 1px solid var(--border); border-radius: var(--radius-full); box-shadow: var(--elev-sm); }
+  .nav-link { height: 32px; padding: 0 13px; border-radius: var(--radius-full); display: flex; align-items: center; font-size: 0.8125rem; font-weight: 500; color: var(--text-muted); text-decoration: none; }
+  .nav-link:hover { color: var(--text-primary); background: var(--overlay); }
+  .nav-link--active { background: var(--accent); color: var(--on-accent); font-weight: 600; }
+
+  .chip { height: 34px; padding: 0 var(--space-md); border-radius: var(--radius-full); background: var(--accent); color: var(--on-accent); font-size: 0.75rem; font-weight: 600; display: inline-flex; align-items: center; }
+
+  .icon-btn { width: 44px; height: 44px; border-radius: var(--radius-full); display: inline-flex; align-items: center; justify-content: center; color: var(--text-faint); background: none; border: none; cursor: pointer; }
+  .icon-btn:hover { color: var(--on-accent); background: var(--overlay); }
+  .icon-btn svg { width: 20px; height: 20px; }
+
+  .card { width: 280px; text-decoration: none; }
+  .card .frame { position: relative; border-radius: var(--radius-md); overflow: hidden; background: var(--surface-sunken); box-shadow: var(--elev-md); padding: 3px; transition: box-shadow .3s, transform .3s; }
+  .card .frame img { width: 100%; display: block; border-radius: var(--radius-sm); }
+  .card--force-hover .frame { box-shadow: var(--elev-lg); transform: translateY(-5px); }
+  .card .scrim { position: absolute; left: 0; right: 0; bottom: 0; padding: var(--space-sm) var(--space-md); background: var(--scrim); transform: translateY(100%); transition: transform .3s; }
+  .card--force-hover .scrim { transform: translateY(0); }
+  .card .scrim p { color: rgba(255,255,255,0.9); font-size: 0.8125rem; line-height: 1.5; }
+  .card .info { display: flex; justify-content: space-between; padding: var(--space-sm) 2px 0; }
+  .card .info .title { font-size: 0.9375rem; font-weight: 700; color: var(--text-primary); }
+  .ph { aspect-ratio: 16/10; background: linear-gradient(135deg, var(--surface-sunken), #dcd8cd); border-radius: var(--radius-sm); }
+
+  .photo { width: 200px; height: 254px; border-radius: var(--radius-lg); box-shadow: var(--elev-lg); background: linear-gradient(160deg, var(--surface-sunken), #d8d3c6); }
+
+  .dodont { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+  .dodont ul { list-style: none; }
+  .dodont li { padding: var(--space-sm) 0 var(--space-sm) var(--space-lg); position: relative; font-size: 0.9375rem; color: var(--text-secondary); border-bottom: 1px solid var(--border); }
+  .dodont .do li::before { content: "✓"; position: absolute; left: 0; color: var(--success); font-weight: 700; }
+  .dodont .dont li::before { content: "✗"; position: absolute; left: 0; color: var(--danger); font-weight: 700; }
+  .dodont h3 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: var(--space-sm); color: var(--text-muted); }
+
+  @media (max-width: 720px) { .dodont { grid-template-columns: 1fr; } .wrap { padding: var(--space-2xl) var(--space-lg); } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="doc">
+    <h1>Warm Grotesk</h1>
+    <p>A warm, confident personal-portfolio system — near-black type and an amber accent on temperature-tinted off-white, set entirely in Space Grotesk.</p>
+    <div class="mirror-note">This page mirrors <strong>docs/design.md</strong> (the source of truth). Single-theme (light) by design. Do not edit here — change design.md and regenerate.</div>
+  </header>
+
+  <section>
+    <div class="rule"><span class="label">Colors</span><span class="line"></span></div>
+    <p class="note">Amber is the only expressive hue. Every neutral is temperature-tinted warm. <code>textFaint</code> is decorative-only and intentionally fails text contrast.</p>
+    <div class="swatches">
+      <div class="sw"><div class="fill" style="background:var(--accent);color:var(--on-accent)">onAccent text</div><div class="meta"><div class="name">accent</div><div class="hex">#FFB343</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--primary);color:var(--on-primary)">onPrimary text</div><div class="meta"><div class="name">primary</div><div class="hex">#1C1B19</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface);color:var(--text-primary);border-bottom:1px solid var(--border)">surface</div><div class="meta"><div class="name">surface</div><div class="hex">#F3F1EA</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface-raised);color:var(--text-primary);border-bottom:1px solid var(--border)">raised</div><div class="meta"><div class="name">surfaceRaised</div><div class="hex">#FBFAF6</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface-sunken);color:var(--text-primary)">sunken</div><div class="meta"><div class="name">surfaceSunken</div><div class="hex">#E9E6DD</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface);color:var(--text-secondary)">Aa secondary</div><div class="meta"><div class="name">textSecondary</div><div class="hex">#4A463F</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface);color:var(--text-muted)">Aa muted</div><div class="meta"><div class="name">textMuted</div><div class="hex">#66625A</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface);color:var(--text-faint)">Aa faint (deco)</div><div class="meta"><div class="name">textFaint</div><div class="hex">#A6A199</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--surface);color:var(--text-primary);border:1px solid var(--border)">border</div><div class="meta"><div class="name">border</div><div class="hex">#E5E2D9</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--success);color:#fff">success</div><div class="meta"><div class="name">success</div><div class="hex">#3F8F63</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--warning);color:#fff">warning</div><div class="meta"><div class="name">warning</div><div class="hex">#C9821F</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--danger);color:#fff">danger</div><div class="meta"><div class="name">danger</div><div class="hex">#C24A38</div></div></div>
+      <div class="sw"><div class="fill" style="background:var(--info);color:#fff">info</div><div class="meta"><div class="name">info</div><div class="hex">#3C6F9E</div></div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">Typography</span><span class="line"></span></div>
+    <p class="note">One face — Space Grotesk. Ratio 1.25 (major third). Weight and size create hierarchy, not a second family.</p>
+    <div class="specimen">
+      <div class="row"><div class="spec">4xl · display<br>clamp→4.5rem / 700 / -0.03em</div><div style="font-size:clamp(2.375rem,5.5vw,4.5rem);font-weight:700;letter-spacing:-0.03em;line-height:1.05">Let's build something</div></div>
+      <div class="row"><div class="spec">3xl · 2.75rem<br>700 / -0.03em</div><div style="font-size:2.75rem;font-weight:700;letter-spacing:-0.03em;line-height:1.08">Selected work</div></div>
+      <div class="row"><div class="spec">2xl · 2rem<br>700 / -0.025em</div><div style="font-size:2rem;font-weight:700;letter-spacing:-0.025em;line-height:1.15">Data solutions</div></div>
+      <div class="row"><div class="spec">xl · 1.5rem<br>700 / -0.02em</div><div style="font-size:1.5rem;font-weight:700;letter-spacing:-0.02em;line-height:1.25">Section heading</div></div>
+      <div class="row"><div class="spec">lg · 1.25rem<br>700 / +0.04em / UPPER</div><div style="font-size:1.25rem;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:var(--accent)">About</div></div>
+      <div class="row"><div class="spec">body · 1.0625rem<br>400 / lh 1.75</div><div style="font-size:1.0625rem;font-weight:400;line-height:1.75;max-width:62ch;color:var(--text-secondary)">Since then I have been building solutions to data problems of all shapes: helping people see and understand their data, and cutting out manual work that shouldn't exist.</div></div>
+      <div class="row"><div class="spec">base · 0.9375rem<br>500</div><div style="font-size:0.9375rem;font-weight:500">World's Happiness in 2026</div></div>
+      <div class="row"><div class="spec">sm · 0.8125rem<br>500</div><div style="font-size:0.8125rem;font-weight:500;color:var(--text-muted)">Interactive D3.js exploration of global wellbeing.</div></div>
+      <div class="row"><div class="spec">xs · 0.75rem<br>600 / +0.01em</div><div style="font-size:0.75rem;font-weight:600;letter-spacing:0.01em">DATA VISUALIZATION</div></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">Spacing</span><span class="line"></span></div>
+    <p class="note">4px base. Tight within groups, generous between sections.</p>
+    <div class="spacing-row"><span class="lbl">2xs · 4px</span><span class="bar" style="width:4px"></span></div>
+    <div class="spacing-row"><span class="lbl">xs · 8px</span><span class="bar" style="width:8px"></span></div>
+    <div class="spacing-row"><span class="lbl">sm · 12px</span><span class="bar" style="width:12px"></span></div>
+    <div class="spacing-row"><span class="lbl">md · 16px</span><span class="bar" style="width:16px"></span></div>
+    <div class="spacing-row"><span class="lbl">lg · 24px</span><span class="bar" style="width:24px"></span></div>
+    <div class="spacing-row"><span class="lbl">xl · 36px</span><span class="bar" style="width:36px"></span></div>
+    <div class="spacing-row"><span class="lbl">2xl · 52px</span><span class="bar" style="width:52px"></span></div>
+    <div class="spacing-row"><span class="lbl">3xl · 72px</span><span class="bar" style="width:72px"></span></div>
+    <div class="spacing-row"><span class="lbl">4xl · 100px</span><span class="bar" style="width:100px"></span></div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">Radius</span><span class="line"></span></div>
+    <p class="note">Radius varies by element class — the shape system's signal.</p>
+    <div class="radius-grid">
+      <div class="box" style="border-radius:var(--radius-xs)">xs · 4px</div>
+      <div class="box" style="border-radius:var(--radius-sm)">sm · 8px</div>
+      <div class="box" style="border-radius:var(--radius-md)">md · 16px</div>
+      <div class="box" style="border-radius:var(--radius-lg)">lg · 24px</div>
+      <div class="box" style="border-radius:var(--radius-full)">full</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">Elevation</span><span class="line"></span></div>
+    <p class="note">Warm-neutral-tinted shadows only — no colored glows or halos.</p>
+    <div class="elev-grid">
+      <div class="card" style="box-shadow:var(--elev-sm)">sm</div>
+      <div class="card" style="box-shadow:var(--elev-md)">md</div>
+      <div class="card" style="box-shadow:var(--elev-lg)">lg</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">Components</span><span class="line"></span></div>
+
+    <div class="demo"><span class="cap">nav — rest / scrolled</span>
+      <div class="navbar"><div class="nav-name">Francisco Cardoso</div><div class="nav-menu"><a class="nav-link nav-link--active">Work</a><a class="nav-link">About</a><a class="nav-link">Contact</a></div></div>
+    </div>
+
+    <div class="demo"><span class="cap">navLink — rest / hover / active</span>
+      <div class="nav-menu"><a class="nav-link">rest</a><a class="nav-link" style="color:var(--text-primary);background:var(--overlay)">hover</a><a class="nav-link nav-link--active">active</a></div>
+    </div>
+
+    <div class="demo"><span class="cap">button — primary: rest / hover / focus / disabled</span>
+      <a class="btn btn--primary">Primary</a>
+      <a class="btn btn--primary btn--force-hover">Hover →</a>
+      <a class="btn btn--primary btn--force-focus">Focus</a>
+      <a class="btn btn--primary btn--disabled">Disabled</a>
+    </div>
+    <div class="demo"><span class="cap">button — accent / tonal</span>
+      <a class="btn btn--accent">Accent</a>
+      <a class="btn btn--tonal">Tonal</a>
+    </div>
+
+    <div class="demo"><span class="cap">chip — accent (skill tags)</span>
+      <span class="chip">Data Solutions Architecture</span><span class="chip">AI Integration</span><span class="chip">Data Visualization</span>
+    </div>
+
+    <div class="demo"><span class="cap">iconButton — ghost: rest / hover</span>
+      <button class="icon-btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.6 9.6 0 015 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0022 12c0-5.52-4.48-10-10-10z"/></svg></button>
+      <button class="icon-btn" style="color:var(--on-accent);background:var(--overlay)"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 17v-6.9H6.06V17h2.28zM7.2 9.06a1.32 1.32 0 100-2.64 1.32 1.32 0 000 2.64zM18 17v-3.78c0-2.02-.43-3.57-2.79-3.57-1.13 0-1.89.62-2.2 1.21h-.03v-1.02H10.8V17h2.28v-3.42c0-.9.17-1.77 1.28-1.77 1.1 0 1.11 1.03 1.11 1.83V17H18z"/></svg></button>
+    </div>
+
+    <div class="demo" style="align-items:flex-start"><span class="cap">workCard — image: rest / hover (forced)</span>
+      <a class="card"><div class="frame"><div class="ph"></div></div><div class="info"><span class="title">Predictions</span></div></a>
+      <a class="card card--force-hover"><div class="frame"><div class="ph"></div><div class="scrim"><p>Scrollytelling data story on the accuracy of human predictions.</p></div></div><div class="info"><span class="title">Predictions</span></div></a>
+    </div>
+
+    <div class="demo"><span class="cap">sectionRule</span>
+      <div class="rule" style="width:100%;margin:0"><span class="label">Selected Work</span><span class="line"></span></div>
+    </div>
+
+    <div class="demo"><span class="cap">photo — portrait frame</span>
+      <div class="photo"></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">Do's & Don'ts</span><span class="line"></span></div>
+    <div class="dodont">
+      <div class="do"><h3>Do</h3><ul>
+        <li>Keep amber as the only expressive color; let weight and warm neutrals carry hierarchy.</li>
+        <li>Temperature-tint every neutral warm — no pure grays, no #000, no #F2F2F2.</li>
+        <li>Bind visual values to tokens; rationalize new sizes onto the spacing/type scale.</li>
+        <li>Give pills a ≥44px hit area and a visible amber focus ring.</li>
+        <li>Use elevation tokens for all shadows; hold bio copy to ~62ch.</li>
+      </ul></div>
+      <div class="dont"><h3>Don't</h3><ul>
+        <li>Add a second accent hue or any gradient — not on heroes, not on buttons.</li>
+        <li>Reintroduce amber-tinted glow shadows or colored hover halos.</li>
+        <li>Use glassmorphism; lifted surfaces are solid surfaceRaised.</li>
+        <li>Use textFaint for body or essential text — decorative icons only.</li>
+        <li>Invent a variant/state or hardcode a value that has a token.</li>
+      </ul></div>
+    </div>
+  </section>
+</div>
+</body>
+</html>

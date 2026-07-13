@@ -1,0 +1,60 @@
+/* Generated from docs/design.md — Warm Grotesk. Do not hand-edit; edit design.md and re-run tokens. */
+:root {
+  /* colors */
+  --color-accent: #FFB343;
+  --color-on-accent: #3D3A34;
+  --color-primary: #1C1B19;
+  --color-on-primary: #FFFFFF;
+  --color-surface: #F3F1EA;
+  --color-surface-raised: #FBFAF6;
+  --color-surface-sunken: #E9E6DD;
+  --color-text-primary: #1C1B19;
+  --color-text-secondary: #4A463F;
+  --color-text-muted: #66625A;
+  --color-text-faint: #A6A199;
+  --color-border: #E5E2D9;
+  --color-focus-ring: #FFB343;
+  --color-scrim: rgba(28, 27, 25, 0.86);
+  --color-overlay: rgba(28, 27, 25, 0.10);
+  --color-success: #3F8F63;
+  --color-warning: #C9821F;
+  --color-danger: #C24A38;
+  --color-info: #3C6F9E;
+
+  /* typography */
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Space Grotesk', sans-serif;
+
+  --type-xs-size: 0.75rem;     --type-xs-line-height: 1.5;  --type-xs-weight: 600; --type-xs-letter-spacing: 0.01em;
+  --type-sm-size: 0.8125rem;   --type-sm-line-height: 1.55; --type-sm-weight: 500; --type-sm-letter-spacing: 0;
+  --type-base-size: 0.9375rem; --type-base-line-height: 1.6;  --type-base-weight: 500; --type-base-letter-spacing: 0;
+  --type-body-size: 1.0625rem; --type-body-line-height: 1.75; --type-body-weight: 400; --type-body-letter-spacing: 0;
+  --type-lg-size: 1.25rem;     --type-lg-line-height: 1.3;  --type-lg-weight: 700; --type-lg-letter-spacing: 0.04em;
+  --type-xl-size: 1.5rem;      --type-xl-line-height: 1.25; --type-xl-weight: 700; --type-xl-letter-spacing: -0.02em;
+  --type-2xl-size: 2rem;       --type-2xl-line-height: 1.15; --type-2xl-weight: 700; --type-2xl-letter-spacing: -0.025em;
+  --type-3xl-size: 2.75rem;    --type-3xl-line-height: 1.08; --type-3xl-weight: 700; --type-3xl-letter-spacing: -0.03em;
+  --type-4xl-size: clamp(2.375rem, 5.5vw, 4.5rem); --type-4xl-line-height: 1.05; --type-4xl-weight: 700; --type-4xl-letter-spacing: -0.03em;
+
+  /* spacing */
+  --space-2xs: 4px;
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 36px;
+  --space-2xl: 52px;
+  --space-3xl: 72px;
+  --space-4xl: 100px;
+
+  /* radius */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 999px;
+
+  /* elevation */
+  --elevation-sm: 0 2px 8px rgba(38, 34, 26, 0.06);
+  --elevation-md: 0 4px 16px rgba(38, 34, 26, 0.08);
+  --elevation-lg: 0 20px 48px rgba(38, 34, 26, 0.14);
+}
