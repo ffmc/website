@@ -47,12 +47,15 @@
   .pill-link {
     display: inline-flex; align-items: center; gap: var(--space-xs);
     height: 38px; padding: 0 var(--space-md); flex-shrink: 0;
-    border-radius: var(--radius-full); border: 1px solid var(--border);
-    background: var(--surface-raised); color: var(--text-secondary);
+    border-radius: var(--radius-full); border: none;
+    background: var(--surface-sunken); color: var(--text-muted);
     font-size: 0.875rem; font-weight: 500; text-decoration: none;
     transition: all 0.18s ease;
   }
-  .pill-link:hover { color: var(--text-primary); border-color: var(--text-faint); }
+  .pill-link:hover {
+    background: color-mix(in srgb, var(--surface-sunken) 88%, var(--text-primary));
+    color: var(--text-primary); transform: translateY(-2px);
+  }
   .pill-link svg { width: 18px; height: 18px; flex-shrink: 0; }
 
   .back-link { margin-bottom: var(--space-xl); }
