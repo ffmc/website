@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import projects from '../projects'
 
 const PER_PAGE = 6
@@ -53,9 +53,23 @@ function VideoCard({ src, poster, desc }) {
   )
 }
 
+function useIsMobile(breakpoint = 860) {
+  const [isMobile, setIsMobile] = useState(
+    () => typeof window !== 'undefined' && window.innerWidth <= breakpoint
+  )
+  useEffect(() => {
+    const mq = window.matchMedia(`(max-width: ${breakpoint}px)`)
+    const onChange = e => setIsMobile(e.matches)
+    mq.addEventListener('change', onChange)
+    return () => mq.removeEventListener('change', onChange)
+  }, [breakpoint])
+  return isMobile
+}
+
 export default function WorkGallery({ cols = '2' }) {
   const [count, setCount] = useState(PER_PAGE)
   const prevCountRef = useRef(0)
+  const isMobile = useIsMobile()
   const visible = projects.slice(0, count)
   const hasMore = count < projects.length
 
@@ -100,7 +114,7 @@ export default function WorkGallery({ cols = '2' }) {
     </div>
   )
 
-  if (String(cols) === '1') {
+  if (String(cols) === '1' || isMobile) {
     return (
       <>
         <div className="work-gallery-col">
