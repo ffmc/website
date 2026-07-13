@@ -137,6 +137,14 @@ const projects = [
     link: 'https://public.tableau.com/app/profile/francisco4773/viz/IndianCricketStats/Final',
     thumbH: 927,
   },
+  {
+    id: 18,
+    title: 'Fallow',
+    desc: "A quiet, Stoic reflection app for Android and iOS. Browse everyday struggles, sit with a rotating prompt and curated passages, and save the ones that resonate.",
+    image: '/images/thumbnails/fallow-stoic-app.png',
+    link: '/fallow-stoic-app.html',
+    thumbH: 1100,
+  },
 ]
 
 export default projects
