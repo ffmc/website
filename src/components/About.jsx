@@ -15,7 +15,7 @@ export default function About() {
     <section id="about" className="page-section">
       <div className="about-split fade-up">
         <div className="about-photo-wrap">
-          <img src="/images/website_thumb.png" alt={SITE.name} />
+          <img src="/images/website_thumb.webp" width={700} height={630} alt={SITE.name} />
         </div>
         <div className="about-right">
           <p className="about-bio">

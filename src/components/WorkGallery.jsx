@@ -98,7 +98,7 @@ export default function WorkGallery({ cols = '2' }) {
           ? <VideoCard src={p.video} poster={p.image} desc={p.desc} />
           : (
             <div className="work-img-wrap">
-              {p.image && <img src={p.image} alt={p.title} />}
+              {p.image && <img src={p.image} alt={p.title} loading="lazy" />}
               <div className="work-hover-overlay" />
               <div className="work-desc-band"><p>{p.desc}</p></div>
             </div>
