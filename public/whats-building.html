@@ -1,0 +1,271 @@
+<title>What's Building — Workflow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --accent: #FFB343;
+    --on-accent: #3D3A34;
+    --primary: #1C1B19;
+    --on-primary: #FFFFFF;
+    --surface: #F3F1EA;
+    --surface-raised: #FBFAF6;
+    --surface-sunken: #E9E6DD;
+    --text-primary: #1C1B19;
+    --text-secondary: #4A463F;
+    --text-muted: #66625A;
+    --text-faint: #A6A199;
+    --border: #E5E2D9;
+    --focus-ring: #FFB343;
+    --scrim: rgba(28,27,25,0.86);
+    --overlay: rgba(28,27,25,0.10);
+
+    --font-sans: 'Space Grotesk', sans-serif;
+
+    --space-2xs: 4px; --space-xs: 8px; --space-sm: 12px; --space-md: 16px;
+    --space-lg: 24px; --space-xl: 36px; --space-2xl: 52px; --space-3xl: 72px; --space-4xl: 100px;
+
+    --radius-xs: 4px; --radius-sm: 8px; --radius-md: 16px; --radius-lg: 24px; --radius-full: 999px;
+
+    --elev-sm: 0 2px 8px rgba(38,34,26,0.06);
+    --elev-md: 0 4px 16px rgba(38,34,26,0.08);
+    --elev-lg: 0 20px 48px rgba(38,34,26,0.14);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--surface);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+  }
+
+  .wrap { max-width: 1240px; margin: 0 auto; padding: var(--space-4xl) var(--space-2xl); }
+
+  .pill-link {
+    display: inline-flex; align-items: center; gap: var(--space-xs);
+    height: 38px; padding: 0 var(--space-md); flex-shrink: 0;
+    border-radius: var(--radius-full); border: none;
+    background: var(--surface-sunken); color: var(--text-muted);
+    font-size: 0.875rem; font-weight: 500; text-decoration: none;
+    transition: all 0.18s ease;
+  }
+  .pill-link:hover {
+    background: color-mix(in srgb, var(--surface-sunken) 88%, var(--text-primary));
+    color: var(--text-primary); transform: translateY(-2px);
+  }
+  .pill-link svg { width: 18px; height: 18px; flex-shrink: 0; }
+
+  .back-link { margin-bottom: var(--space-xl); }
+
+  header.doc { margin-bottom: var(--space-3xl); max-width: 62ch; }
+  header.doc h1 { font-size: clamp(2.375rem, 5.5vw, 4rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.05; }
+  header.doc p { color: var(--text-secondary); font-size: 1.0625rem; margin-top: var(--space-sm); line-height: 1.75; }
+  header.doc p + p { margin-top: var(--space-md); }
+
+  .github-link { margin-top: var(--space-lg); }
+
+  .rule { display: flex; align-items: center; gap: var(--space-lg); margin-bottom: var(--space-xl); }
+  .rule .label { font-size: 1.25rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--accent); white-space: nowrap; }
+  .rule .line { flex: 1; height: 1px; background: var(--accent); }
+
+  section { margin-bottom: var(--space-3xl); }
+
+  .prose { max-width: 62ch; }
+  .prose p { color: var(--text-secondary); font-size: 1.0625rem; line-height: 1.75; }
+  .prose p + p { margin-top: var(--space-md); }
+
+  .flow {
+    display: flex; align-items: stretch;
+    background: var(--surface-sunken);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--elev-sm), var(--elev-md);
+    padding: var(--space-xl) var(--space-lg);
+    margin-bottom: var(--space-xl);
+  }
+
+  .node {
+    flex: 1; min-width: 0;
+    background: var(--surface-raised);
+    border-radius: var(--radius-md);
+    box-shadow: var(--elev-sm);
+    padding: var(--space-md);
+    display: flex; flex-direction: column; gap: var(--space-2xs);
+  }
+  .node .num {
+    width: 28px; height: 28px; border-radius: var(--radius-full);
+    background: var(--accent); color: var(--on-accent);
+    font-size: 0.8125rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: var(--space-xs);
+  }
+  .node .name { font-size: 0.9375rem; font-weight: 700; line-height: 1.3; }
+  .node .tool { font-size: 0.8125rem; color: var(--text-muted); line-height: 1.4; }
+  .node .out {
+    margin-top: auto; padding-top: var(--space-sm);
+    font-size: 0.75rem; font-weight: 600; color: var(--text-secondary);
+  }
+
+  .arrow {
+    flex: 0 0 28px;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--accent);
+  }
+  .arrow svg { width: 18px; height: 18px; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: var(--space-lg);
+  }
+  .step {
+    background: var(--surface-raised);
+    border-radius: var(--radius-md);
+    box-shadow: var(--elev-sm);
+    padding: var(--space-lg);
+  }
+  .step h3 { display: flex; align-items: center; gap: var(--space-sm); font-size: 1rem; font-weight: 700; margin-bottom: var(--space-sm); }
+  .step h3 .num {
+    width: 26px; height: 26px; border-radius: var(--radius-full); flex-shrink: 0;
+    background: var(--accent); color: var(--on-accent);
+    font-size: 0.75rem; font-weight: 700;
+    display: inline-flex; align-items: center; justify-content: center;
+  }
+  .step p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
+
+  .lanes { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-lg); }
+  .lane {
+    background: var(--surface-raised);
+    border-radius: var(--radius-md);
+    box-shadow: var(--elev-sm);
+    padding: var(--space-lg);
+  }
+  .lane h3 { font-size: 1rem; font-weight: 700; margin-bottom: var(--space-sm); }
+  .lane .chain { display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs); margin-bottom: var(--space-md); }
+  .lane .chip {
+    height: 30px; padding: 0 var(--space-sm); border-radius: var(--radius-full);
+    background: var(--accent); color: var(--on-accent);
+    font-size: 0.75rem; font-weight: 600;
+    display: inline-flex; align-items: center;
+  }
+  .lane .chain svg { width: 14px; height: 14px; color: var(--text-faint); }
+  .lane p { color: var(--text-secondary); font-size: 0.9375rem; line-height: 1.65; }
+
+  footer {
+    margin-top: var(--space-3xl);
+    text-align: center;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 860px) {
+    .wrap { padding: var(--space-3xl) var(--space-md); }
+    .flow { flex-direction: column; padding: var(--space-lg) var(--space-md); }
+    .arrow { flex-basis: 28px; transform: rotate(90deg); }
+    .node .out { padding-top: var(--space-xs); }
+    .steps { grid-template-columns: 1fr; }
+    .lanes { grid-template-columns: 1fr; }
+  }
+</style>
+
+<div class="wrap">
+  <a class="pill-link back-link" href="/">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg>
+    Back
+  </a>
+  <header class="doc">
+    <h1>What's Building</h1>
+    <p>A pipeline that finds every GitHub repo created since July 2021 with at least 50 stars, uses Claude to classify what each one is and what it's about, and tracks how stars and watchers move over time. All of it ends up as a few static JSON files that a web page can read.</p>
+    <p>The window starts more than a year before ChatGPT launched, so there's a real group of pre-boom repos to compare against everything created after it.</p>
+    <a class="pill-link github-link" href="https://github.com/ffmc/whats-building" target="_blank" rel="noopener noreferrer">
+      <svg viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+      View on GitHub
+    </a>
+  </header>
+
+  <section>
+    <div class="rule"><span class="label">The Problem</span><span class="line"></span></div>
+    <div class="prose">
+      <p>GitHub shows you repos one at a time. It won't tell you that half of the repos created in 2026 that crossed 50 stars are about AI, or that agent and MCP projects went from 275 in 2022 to more than 9,000 this year. Getting to numbers like that means classifying more than a quarter of a million repos and tracking how their stars change over time.</p>
+      <p>Each of those runs into a limit. The Search API stops at 1,000 results per query, one LLM call per repo would cost around $210 for the full set, and daily snapshots of every repo would reach 2.4 GB within three months. On top of that, the whole thing had to run without a server and cost close to nothing to host.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">The Workflow</span><span class="line"></span></div>
+
+    <div class="flow">
+      <div class="node"><span class="num">1</span><span class="name">Discover</span><span class="tool">GitHub Search API</span><span class="out">262,902 repos</span></div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="num">2</span><span class="name">Snapshot</span><span class="tool">GitHub GraphQL</span><span class="out">Stars, forks, watchers</span></div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="num">3</span><span class="name">Classify</span><span class="tool">Claude Haiku 4.5, Batch API</span><span class="out">14 categories × 29 domains</span></div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="num">4</span><span class="name">Store</span><span class="tool">SQLite, tiered retention</span><span class="out">~340 MB</span></div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="num">5</span><span class="name">Aggregate</span><span class="tool">Python</span><span class="out">~2 MB of JSON</span></div>
+      <div class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg></div>
+      <div class="node"><span class="num">6</span><span class="name">Publish</span><span class="tool">Static site</span><span class="out">No backend</span></div>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <h3><span class="num">1</span>Discover</h3>
+        <p>Searches for repos created since July 2021 with 50 or more stars, excluding forks. Search caps every query at 1,000 results, so the crawl slices the window into date ranges small enough to stay under the cap and pages through each one. The star floor only applies at discovery, so a repo that later drops below 50 stays tracked and the trends don't only count the repos that kept their stars.</p>
+      </div>
+      <div class="step">
+        <h3><span class="num">2</span>Snapshot</h3>
+        <p>Pulls stars, forks and watchers for 100 repos per GraphQL request, keyed by node ID so a renamed repo still matches. Watchers have to come from GraphQL because the REST API returns the star count in that field. A full pass over every repo takes about two hours and fits inside the free rate limit.</p>
+      </div>
+      <div class="step">
+        <h3><span class="num">3</span>Classify</h3>
+        <p>Claude Haiku 4.5 sorts each repo by what it is (library, CLI tool, web app and so on) and what it's about, and flags whether it's AI related. Packing 20 repos into each call and sending them through the Batch API classified all 262,902 for $56.65. A strict schema keeps every answer inside the taxonomy, and repos only get re-classified when their description changes.</p>
+      </div>
+      <div class="step">
+        <h3><span class="num">4</span>Store</h3>
+        <p>The database keeps metrics in three tiers: one anchor snapshot per repo from day one, weekly snapshots for the last 90 days, and monthly snapshots forever. That keeps both recent detail and the long-run trend while the database stays around 340 MB, about a seventh of what daily snapshots would take.</p>
+      </div>
+      <div class="step">
+        <h3><span class="num">5</span>Aggregate</h3>
+        <p>One script is the only thing that reads the database. It collapses hundreds of thousands of repos and millions of metric rows into category and domain counts, trends per snapshot and the top 100 repos in each category, about 2 MB of JSON in total. Swapping the database later means changing this one file.</p>
+      </div>
+      <div class="step">
+        <h3><span class="num">6</span>Publish</h3>
+        <p>The page loads those JSON files and never queries a database, so hosting is free and there's no backend to run. A visitor downloads a few hundred kilobytes to see the whole picture.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="rule"><span class="label">How It Runs</span><span class="line"></span></div>
+    <div class="lanes">
+      <div class="lane">
+        <h3>Daily</h3>
+        <div class="chain">
+          <span class="chip">1 Discover</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          <span class="chip">3 Classify</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          <span class="chip">5 Aggregate</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          <span class="chip">6 Publish</span>
+        </div>
+        <p>Picks up repos that crossed 50 stars in the last few days and classifies them with the regular API before the page redeploys. It takes minutes and costs a few cents.</p>
+      </div>
+      <div class="lane">
+        <h3>Weekly</h3>
+        <div class="chain">
+          <span class="chip">2 Snapshot</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M13 6l6 6-6 6"/></svg>
+          <span class="chip">4 Store</span>
+        </div>
+        <p>Refreshes metrics for every tracked repo and applies the retention rules. Both jobs run on GitHub Actions and store the database in Cloudflare R2, and they share a lock so they never write to it at the same time.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>What's Building, a pipeline over 262,902 GitHub repos.</footer>
+</div>
