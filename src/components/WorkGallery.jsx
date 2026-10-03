@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from 'react'
 import projects from '../projects'
 
 const PER_PAGE = 6
+const CATEGORIES = ['Data Visualization', 'Automation', 'Apps', 'Prototypes']
+  .filter(c => projects.some(p => p.category === c))
 
 function buildColumnAssignment(items) {
   const leftIds = new Set()
@@ -18,8 +20,6 @@ function buildColumnAssignment(items) {
   }
   return { leftIds, rightIds }
 }
-
-const { leftIds, rightIds } = buildColumnAssignment(projects)
 
 function CardWrapper({ link, className, style, children }) {
   if (link) {
@@ -68,10 +68,14 @@ function useIsMobile(breakpoint = 860) {
 
 export default function WorkGallery({ cols = '2' }) {
   const [count, setCount] = useState(PER_PAGE)
+  const [filter, setFilter] = useState('All')
   const prevCountRef = useRef(0)
+  const filterChangedRef = useRef(false)
   const isMobile = useIsMobile()
-  const visible = projects.slice(0, count)
-  const hasMore = count < projects.length
+  const filtered = filter === 'All' ? projects : projects.filter(p => p.category === filter)
+  const { leftIds, rightIds } = buildColumnAssignment(filtered)
+  const visible = filtered.slice(0, count)
+  const hasMore = count < filtered.length
 
   const leftCol  = visible.filter(p => leftIds.has(p.id))
   const rightCol = visible.filter(p => rightIds.has(p.id))
@@ -81,18 +85,30 @@ export default function WorkGallery({ cols = '2' }) {
     setCount(c => c + PER_PAGE)
   }
 
+  function selectFilter(f) {
+    if (f === filter) return
+    prevCountRef.current = 0
+    filterChangedRef.current = true
+    setFilter(f)
+    setCount(PER_PAGE)
+  }
+
   function renderCard(p) {
-    const globalIndex = projects.indexOf(p)
+    const globalIndex = filtered.indexOf(p)
     const isNew = globalIndex >= prevCountRef.current
+    const entering = filterChangedRef.current && prevCountRef.current === 0
     return (
       <CardWrapper
-        key={p.id}
+        key={`${filter}-${p.id}`}
         link={p.link}
-        className="work-thumb fade-up in"
-        style={isNew ? { transitionDelay: `${(globalIndex - prevCountRef.current) * 0.06}s` } : {}}
+        className={`work-thumb fade-up in${entering ? ' work-enter' : ''}`}
+        style={entering
+          ? { animationDelay: `${globalIndex * 0.06}s` }
+          : isNew ? { transitionDelay: `${(globalIndex - prevCountRef.current) * 0.06}s` } : {}}
       >
         <div className="work-info">
           <div className="work-title">{p.title}</div>
+          {filter === 'All' && <span className="work-tag">{p.category}</span>}
         </div>
         {p.video
           ? <VideoCard src={p.video} poster={p.image} desc={p.desc} />
@@ -114,9 +130,25 @@ export default function WorkGallery({ cols = '2' }) {
     </div>
   )
 
+  const filters = (
+    <div className="work-filters">
+      {['All', ...CATEGORIES].map(f => (
+        <button
+          key={f}
+          className={`filter-pill${f === filter ? ' active' : ''}`}
+          aria-pressed={f === filter}
+          onClick={() => selectFilter(f)}
+        >
+          {f}
+        </button>
+      ))}
+    </div>
+  )
+
   if (String(cols) === '1' || isMobile) {
     return (
       <>
+        {filters}
         <div className="work-gallery-col">
           {visible.map(p => renderCard(p))}
         </div>
@@ -127,6 +159,7 @@ export default function WorkGallery({ cols = '2' }) {
 
   return (
     <>
+      {filters}
       <div className="work-gallery-2col">
         <div className="work-gallery-col">
           {leftCol.map(p => renderCard(p))}

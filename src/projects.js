@@ -1,6 +1,7 @@
 const projects = [
   {
     id: 18,
+    category: 'Apps',
     title: 'Fallow',
     desc: "A quiet, Stoic reflection app for Android and iOS. Browse everyday struggles, sit with a rotating prompt and curated passages, and save the ones that resonate.",
     image: '/images/thumbnails/fallow-stoic-app.webp',
@@ -10,6 +11,7 @@ const projects = [
   },
   {
     id: 0,
+    category: 'Apps',
     title: 'The Scramble Cook',
     desc: 'Personal app that builds a random weekly menu from home recipes. Pulls from a cloud datasource to end the daily "what are we having?" chore.',
     image: '/images/thumbnails/scramble-cook.webp',
@@ -19,6 +21,7 @@ const projects = [
   },
   {
     id: 1,
+    category: 'Data Visualization',
     title: "World's Happiness in 2026",
     desc: 'Interactive D3.js exploration of global wellbeing scores across 147 countries using 2026 Gallup data.',
     image: '/images/thumbnails/world-happiness-2026.webp',
@@ -27,6 +30,7 @@ const projects = [
   },
   {
     id: 2,
+    category: 'Data Visualization',
     title: 'Predictions',
     desc: 'A scrollytelling data story exploring the accuracy of human predictions across global forecasting platforms.',
     image: '/images/thumbnails/predictions.webp',
@@ -35,6 +39,7 @@ const projects = [
   },
   {
     id: 3,
+    category: 'Prototypes',
     title: 'Debate Room',
     desc: 'Cinematic HTML explainer presenting Debate Room, a next-generation Business Intelligence tool.',
     image: '/images/thumbnails/debate-room.webp',
@@ -44,6 +49,7 @@ const projects = [
   },
   {
     id: 4,
+    category: 'Prototypes',
     title: 'Lens',
     desc: 'AI-powered analytics dashboard with intelligent insight cards and anomaly detection for business data.',
     image: '/images/thumbnails/lens-dashboard.webp',
@@ -52,6 +58,7 @@ const projects = [
   },
   {
     id: 5,
+    category: 'Data Visualization',
     title: 'Benefits of Working Remotely',
     desc: 'Showing the top benefits cited by 3,500 remote workers — led by flexible schedule, location, and no commute.',
     image: '/images/thumbnails/benefits-of-working-remotely.webp',
@@ -60,6 +67,7 @@ const projects = [
   },
   {
     id: 6,
+    category: 'Data Visualization',
     title: 'National Parks | #IronViz 2021',
     desc: 'Highlights of US National Parks for the IronViz 2021 competition.',
     image: '/images/thumbnails/national-parks-ironviz-2021.webp',
@@ -68,6 +76,7 @@ const projects = [
   },
   {
     id: 7,
+    category: 'Data Visualization',
     title: 'Leeds United',
     desc: "Tracking Leeds United FC's match victories and performance across football league seasons.",
     image: '/images/thumbnails/leeds-united.webp',
@@ -76,6 +85,7 @@ const projects = [
   },
   {
     id: 8,
+    category: 'Data Visualization',
     title: 'Women in Power',
     desc: 'Comparing the share of women in government, parliament, and leadership roles by country.',
     image: '/images/thumbnails/women-in-power.webp',
@@ -84,6 +94,7 @@ const projects = [
   },
   {
     id: 9,
+    category: 'Data Visualization',
     title: 'The Texas Blackout',
     desc: 'Visualizing the 2021 Texas power grid failure, showing outages, temperatures, and human impact across the state.',
     image: '/images/thumbnails/the-texas-blackout.webp',
@@ -92,6 +103,7 @@ const projects = [
   },
   {
     id: 10,
+    category: 'Data Visualization',
     title: 'Cocoa Import',
     desc: 'Analysing global cocoa bean import volumes and trade flows between producing and consuming countries.',
     image: '/images/thumbnails/cocoa-import.webp',
@@ -100,6 +112,7 @@ const projects = [
   },
   {
     id: 11,
+    category: 'Data Visualization',
     title: 'World Happiness Report',
     desc: 'Maps global happiness scores and their key drivers — GDP, social support, and freedom — across countries.',
     image: '/images/thumbnails/world-happiness-report.webp',
@@ -108,6 +121,7 @@ const projects = [
   },
   {
     id: 12,
+    category: 'Data Visualization',
     title: 'Metros of the World',
     desc: "Visualizing the station count, annual ridership, and network length of the world's major metro systems.",
     image: '/images/thumbnails/metros-of-the-world.webp',
@@ -116,6 +130,7 @@ const projects = [
   },
   {
     id: 14,
+    category: 'Data Visualization',
     title: "Arsenal's Premier League Performance",
     desc: "Charting Arsenal FC's match results, goals scored, and league standing across Premier League seasons.",
     image: '/images/thumbnails/arsenals-premier-league-performance.webp',
@@ -124,6 +139,7 @@ const projects = [
   },
   {
     id: 15,
+    category: 'Data Visualization',
     title: 'Digital Gender Gap',
     desc: 'Comparing internet access and digital skill levels between men and women across countries.',
     image: '/images/thumbnails/digital-gender-gap.webp',
@@ -132,6 +148,7 @@ const projects = [
   },
   {
     id: 16,
+    category: 'Data Visualization',
     title: 'Apparel Import',
     desc: 'Analysing global clothing and textile import volumes by country and trade corridor.',
     image: '/images/thumbnails/apparel-import.webp',
@@ -140,6 +157,7 @@ const projects = [
   },
   {
     id: 17,
+    category: 'Data Visualization',
     title: 'Indian Cricket Stats',
     desc: 'Tracking batting averages, bowling figures, and win/loss records of the Indian national cricket team.',
     image: '/images/thumbnails/indian-cricket-stats.webp',
