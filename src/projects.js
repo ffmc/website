@@ -57,6 +57,15 @@ const projects = [
     thumbH: 900,
   },
   {
+    id: 19,
+    category: 'Automation',
+    title: "What's Building",
+    desc: 'Pipeline that uses Claude to classify 262,902 GitHub repos and tracks how their stars change over time.',
+    image: '/images/thumbnails/whats-building.webp',
+    link: '/whats-building.html',
+    thumbH: 900,
+  },
+  {
     id: 5,
     category: 'Data Visualization',
     title: 'Benefits of Working Remotely',
